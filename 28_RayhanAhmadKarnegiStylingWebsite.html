@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registrasi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 16px;
+            bottom: 16px;
+            background-image: url("./gambar/awoawok.jpg");
+
+        }
+
+        .container {
+            background-color: #ffffff85;
+            border: 2px ;
+            padding: 40px;
+            border-radius: 8px 32px 24px 16px;
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+            width: 500px;
+        }
+
+        .container :focus{
+            outline-color: rgb(255, 10, 202);
+        }
+
+        h2 {
+            text-align: center;
+            margin-left: 20px;
+            position: relative;
+            top: -16px;
+            
+        }
+
+        .form-group {
+            margin-bottom: 7px;
+            
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: rgb(0, 0, 0);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group input[type="date"]{
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #1bbc61;
+            outline-color: #cf0fd6;
+            cursor: pointer;
+        }
+
+        .form-group select{
+            width: 105%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #1bbc61;
+            outline-color: #cf0fd6;
+            cursor: pointer;
+        }
+
+        .form-group input:hover {
+            cursor: pointer;
+            border-color: rgb(132, 151, 25);
+        }
+
+        .form-group input[type="radio"],
+        .form-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .form-group .password-toggle {
+            margin-top: 5px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 8px;
+            border-radius: 10px;
+            background-color: #081e22;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background-color: #1867f0;
+        }
+
+        .submit-btn:active{
+            background-color: #444544;
+            transform: translateY(0px);
+        }
+
+        .result-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e9e9e9;
+            border-radius: 8px;
+        }
+
+        .checkbox-group {
+            margin-top: 14px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Form Registrasi</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name" >Nama Lengkap <span class="required"></span></label>
+                <input type="text"  id="name" name="name" " placeholder="Masukkan nama lengkap Anda" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Tanggal Lahir <span class="required"></span></label>
+                <input type="date" id="dob" name="dob" required>
+                <p id="dobError" class="error" style="display: none;">Tanggal lahir tidak boleh lebih dari hari ini.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Umur <span class="required"></span></label>
+                <input type="number" id="age" name="age" placeholder="Umur Anda" readonly required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Jenis Kelamin <span class="required"></span></label>
+                <input type="radio" id="male" name="gender" value="Laki-laki" required> Laki-laki
+                <input type="radio" id="female" name="gender" value="Perempuan" required> Perempuan
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Nomor Telepon <span class="required"></span></label>
+                <input type="text" id="phone" name="phone" placeholder="Masukkan nomor telepon Anda" maxlength="13" required>
+                <p id="phoneError" class="error" style="display: none;">Nomor telepon harus antara 9 hingga 13 digit.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email <span class="required"></span></label>
+                <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+                <p id="emailError" class="error" style="display: none;">email harus berisi '.' setelah '@'.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Kata Sandi <span class="required"></span></label>
+                <input type="password" id="password" name="password" placeholder="Masukkan kata sandi Anda" required>
+                <div class="password-toggle">
+                    <input type="checkbox" id="togglePassword"> Tampilkan kata sandi
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Keahlian <span class="required"></span></label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="skill1" name="skills" value="Pemrograman"> HTML<br>
+                    <input type="checkbox" id="skill2" name="skills" value="Desain Grafis"> CSS<br>
+                    <input type="checkbox" id="skill3" name="skills" value="Manajemen Proyek"> Javascript<br>
+                    <input type="checkbox" id="skill4" name="skills" value="Pemasaran Digital"> PHP
+                </div>
+                <p id="skillWarning" style="color: red; display: none;">Anda hanya dapat memilih hingga 3 keahlian.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="religion">Agama <span class="required"></span></label>
+                <select id="religion" name="religion" required>
+                    <option value="">Pilih Agama</option>
+                    <option value="Islam">Islam</option>
+                    <option value="Kristen">Kristen</option>
+                    <option value="Hindu">Hindu</option>
+                    <option value="Buddha">Buddha</option>
+                    <option value="Konghucu">Konghucu</option>
+                </select>
+            </div>
+
+            <button class="submit-btn" id="myButton" onclick="changeColor()">Daftar</button>
+        </form>
+
+        <div id="resultContainer" class="result-container" style="display: none;">
+            <h3>Hasil Pendaftaran:</h3>
+            <p><strong>Nama Lengkap:</strong> <span id="resultName"></span></p>
+            <p><strong>Umur:</strong> <span id="resultAge"></span></p>
+            <p><strong>Jenis Kelamin:</strong> <span id="resultGender"></span></p>
+            <p><strong>Nomor Telepon:</strong> <span id="resultPhone"></span></p>
+            <p><strong>Email:</strong> <span id="resultEmail"></span></p>
+            <p><strong>Kata Sandi:</strong> <span id="resultPassword"></span></p>
+            <p><strong>Keahlian:</strong> <span id="resultSkills"></span></p>
+            <p><strong>Agama:</strong> <span id="resultReligion"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('dob').addEventListener('change', function() {
+            const dob = new Date(this.value);
+            const today = new Date();
+
+            // Set waktu ke tengah malam untuk membandingkan tanggal
+            today.setHours(0, 0, 0, 0);
+            today.setDate(today.getDate()+1);
+
+            if (dob > today) {
+                document.getElementById('dobError').style.display = 'block';
+                this.value = ''; // Kosongkan input jika tanggal tidak valid
+                document.getElementById('age').value = '';
+            } else {
+                document.getElementById('dobError').style.display = 'none';
+
+                // Hitung umur jika tanggal lahir valid
+                let age = today.getFullYear() - dob.getFullYear();
+                const month = today.getMonth() - dob.getMonth();
+                if (month < 0 || (month === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+                document.getElementById('age').value = age;
+            }
+        });
+
+        document.getElementById('togglePassword').addEventListener('change', function() {
+            const passwordField = document.getElementById('password');
+            if (this.checked) {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        });
+
+        document.getElementById('phone').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Mencegah form di-submit secara default
+
+            const phone = document.getElementById('phone').value;
+
+            // Validasi panjang nomor telepon
+            if (phone.length < 9 || phone.length > 13) {
+                document.getElementById('phoneError').style.display = 'block';
+                return;
+            } else {
+                document.getElementById('phoneError').style.display = 'none';
+            }
+
+            // Tangkap keahlian yang dipilih
+            const selectedSkills = Array.from(document.querySelectorAll('input[name="skills"]:checked'));
+            if (selectedSkills.length > 3) {
+                document.getElementById('skillWarning').style.display = 'block';
+                return;
+            } else {
+                document.getElementById('skillWarning').style.display = 'none';
+            }
+
+            // Tangkap nilai-nilai dari form
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Tangkap keahlian yang dipilih
+            const skills = selectedSkills.map(checkbox => checkbox.value).join(', ');
+
+            const religion = document.getElementById('religion').value;
+
+            // Tampilkan hasil di div resultContainer
+            document.getElementById('resultName').textContent = name;
+            document.getElementById('resultAge').textContent = age;
+            document.getElementById('resultGender').textContent = gender;
+            document.getElementById('resultPhone').textContent = phone;
+            document.getElementById('resultEmail').textContent = email;
+            document.getElementById('resultPassword').textContent = password;
+            document.getElementById('resultSkills').textContent = skills;
+            document.getElementById('resultReligion').textContent = religion;
+
+            // Tampilkan div resultContainer
+            document.getElementById('resultContainer').style.display = 'block';
+        });
+
+        // Tangani perubahan pada checkbox keahlian
+        document.querySelectorAll('input[name="skills"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const selectedSkills = Array.from(document.querySelectorAll('input[name="skills"]:checked'));
+                if (selectedSkills.length > 3) {
+                    this.checked = false;
+                    document.getElementById('skillWarning').style.display = 'block';
+                } else {
+                    document.getElementById('skillWarning').style.display = 'none';
+                }
+            });
+        });
+
+        //warning '.'
+        document.getElementById('email').addEventListener('input', function() {
+            const email = this.value;
+            const atPos = email.indexOf('@');
+            const dotPos = email.indexOf('.', atPos);
+
+            if (dotPos === -1 || atPos === -1) {
+                document.getElementById('emailError').style.display = 'block';
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+            }
+
+            validateForm();
+        });
+    </script>
+
+</body>
+</html>
